@@ -1,34 +1,32 @@
-// Vehicle.java
-class Vehicle {
-    String name;
-    int year;
-    Vehicle(String name, int year) {
-        this.name = name;
-        this.year = year;
-    }
-    void showInfo() {
-        System.out.println("Name: " + name);
-        System.out.println("Year: " + year);
-    }
-}
-class Car extends Vehicle {
-    Car(String name, int year) {
-        super(name, year);
-    }
-}
-class Truck extends Vehicle {
-    Truck(String name, int year) {
-        super(name, year);
-    }
-}
-class VehicleTest {
-    public static void main(String[] args) {
-        Car car = new Car("Toyota", 2022);
-        Truck truck = new Truck("Ford", 2018);
-        System.out.println("Car Info:");
-        car.showInfo();
-        System.out.println("\nTruck Info:");
-        truck.showInfo();
-    }
-}
+public class Vehicle {
+    private String type;
+    private double fuel;
 
+    public Vehicle() {
+        this.type = "Generic Vehicle";
+        this.fuel = 0.0;
+    }
+    public void move() {
+        if (fuel > 0) {
+            System.out.println(type + " is moving...");
+            fuel -= 1.0;
+        } else {
+            System.out.println(type + " can't move. No fuel.");
+        }
+    }
+    public void refuel(double amount) {
+        if (amount > 0) {
+            fuel += amount;
+            System.out.println("Refueled " + amount + " liters. Current fuel: " + fuel);
+        } else {
+            System.out.println("Invalid fuel amount.");
+        }
+    }
+    public static void main(String[] args) {
+        Vehicle v = new Vehicle();
+        v.move();            
+        v.refuel(5.0);       
+        v.move();            
+        v.move();            
+    }
+}
